@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from "react";
+import Header from "./Components/Header";
+// import CategoryTabs from "./Components/CategoryTabs";
+// import OffersFilters from "./Components/OffersFilters";
+// import DestinationList from "./Components/DestinationList";
+// import BottomBar from "./Components/BottomBar";
+// import WhatsAppButton from "./Components/WhatsAppButton";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="font-sans bg-white text-black">
+      <Header />
+      {/* <CategoryTabs />
+      <OffersFilters />
+
+      <DestinationList
+        title="Destinations For You"
+        destinations={[
+          { name: "Manali", rating: 4.3, discount: true },
+          { name: "Jaipur", rating: 4.3 },
+          { name: "Andaman", rating: 4.3 },
+        ]}
+      />
+
+      <DestinationList
+        title="Explore India"
+        destinations={[
+          { name: "Tiger Reserve", rating: 4.3 },
+          { name: "Kashmir", rating: 4.3 },
+          { name: "Varanasi", rating: 4.3, discount: true },
+        ]}
+      />
+
+      <BottomBar />
+      <WhatsAppButton /> */}
     </div>
   );
 }
-
-export default App;
