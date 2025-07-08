@@ -1,10 +1,11 @@
-// tailwind.config.js
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // 👈 Add this line
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        cabiry: ['"Cabiry"', 'cursive'],
+      },
+    },
   },
   plugins: [],
-}
+};

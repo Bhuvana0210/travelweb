@@ -1,7 +1,7 @@
 // App.js
 import React from "react";
 import Header from "./Components/Header";
-// import CategoryTabs from "./Components/CategoryTabs";
+import CategoryTabs from "./Components/CategoryTabs";
 // import OffersFilters from "./Components/OffersFilters";
 // import DestinationList from "./Components/DestinationList";
 // import BottomBar from "./Components/BottomBar";
@@ -11,8 +11,11 @@ export default function App() {
   return (
     <div className="font-sans bg-white text-black">
       <Header />
-      {/* <CategoryTabs />
-      <OffersFilters />
+      <div className="transform -translate-y-[80px]">
+        <CategoryTabs />
+      </div>
+
+      {/*<OffersFilters />
 
       <DestinationList
         title="Destinations For You"
