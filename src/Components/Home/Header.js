@@ -1,66 +1,12 @@
-// import React, { useState } from "react";
-// import DropdownMenu from "./DropdownMenu";
-
-// export default function Header() {
-//   const [showDropdown, setShowDropdown] = useState(false);
-
-//   return (
-
-//     <div className="relative h-[60%] text-white">
-//       {/* 🔹 Background image */}
-//       <div
-//         className="absolute bg-cover bg-center rounded-full w-[600px] h-[600px] left-1/2 -translate-x-1/2 bottom-[10%] overflow-hidden z-0"
-//         style={{
-//           backgroundImage:
-//             "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd8ed3T15lxU0SjCFriMRRmieIgDnBZDdT5w&s')",
-//         }}
-//       >
-//         {/* 🔷 Blue overlay with opacity */}
-//         <div className="absolute inset-0 bg-blue-700 opacity-30 z-10"></div>
-
-//       </div>
-//       {/* 🟠 Orangish curved border with gap */}
-//       <div className="absolute w-[600px] h-[600px] border-b-4 border-orange-500 rounded-full left-1/2 -translate-x-1/2 bottom-[7.5%] z-10 pointer-events-none"></div>
-
-//       {/* 🌟 Content on top */}
-//       <div className="p-4 relative z-20">
-//         <div className="flex justify-between items-center">
-//           <button onClick={() => setShowDropdown(!showDropdown)} className="text-sm">
-//             👤 Bishal Kundu ⌄
-//           </button>
-//           <div className="text-2xl font-bold">Ⓜ️</div>
-//         </div>
-
-//         <input
-//           type="text"
-//           placeholder="Where do you want to go?"
-//           className="w-full mt-4 p-2 rounded-full text-black"
-//         />
-
-//         <h1 className="mt-6 text-2xl font-extrabold leading-snug">
-//           YOUR NEXT JOURNEY<br />STARTS HERE
-//         </h1>
-//         <p className="mt-3 text-lg">
-//           Explore <span className="text-green-400 font-bold">India</span>{" "}
-//           <span className="text-white">30% OFF</span>
-//         </p>
-
-//         <button className="mt-4 bg-black text-white px-4 py-2 rounded-full">
-//           Explore Now
-//         </button>
-
-//         {showDropdown && <DropdownMenu />}
-//       </div>
-//     </div>
-//   );
-// }
 
 import React, { useState } from "react";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import { FaSearch } from "react-icons/fa";
+import axios from "axios";
+import travelLoader from "";
 
 
 export default function Header() {
@@ -77,6 +23,45 @@ export default function Header() {
   //     .catch((error) => console.error("Error fetching data:", error));
   // }, []);
 
+  const [content, setContent] = useState(null);
+  const [loading, setLoading] = useState(true); // for loading state
+  const [error, setError] = useState(null); // for error state
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+
+        const res = await axios.get('https://travelweb-admin-backend.onrender.com/api/home-content');
+        // console.log(res.data);
+        setContent(res.data);
+        setError(null); // clear error on success
+      } catch (err) {
+        setError('Failed to fetch home content.');
+        console.error(err);
+      } finally {
+        setLoading(false); // stop loading in both success and error cases
+      }
+    };
+
+    fetchContent();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <img src={travelLoader} alt="Loading..." className="w-74 h-74" />
+      </div>
+    );
+  }
+  
+  if (error) return <p className="text-red-600">{error}</p>;
+  if (!content) return null; // or a loader
+
+
+  //logic to break heading
+  const headingWords = content.headingText.trim().split(' ');
+  const secondLine = headingWords.splice(-2).join(' ');
+  const firstLine = headingWords.join(' ');
 
   return (
     <div className="relative h-[400px] text-white overflow-hidden">
@@ -150,26 +135,15 @@ export default function Header() {
 
         </div>
 
-        {/* <p className="pl-5 mt-2 text-lg ">
-          <span className="font-bold text-xl">Explore</span>
-          {" "}
-          <span className="font-gwathlyn italic">The</span>
-          <div className="font-bold text-2xl -mt-2">
-            <span className="text-orange-500">IN</span>
-            <span className="text-white">D</span>
-            <span className="text-green-500">IA</span>
-          </div>
-          <div className="leading-none">
-            <div className="text-white -mt-2 text-3xl italic font-bold">30%</div>
-            <div className="pl-8 -mt-3 text-white text-lg">OFF</div>
-          </div>
-        </p> */}
 
         <h1 className="pl-5 w-23 mt-5 text-xl font-extrabold leading-snug font-cabiry">
-          YOUR NEXT JOURNEY
+
+          {/* YOUR NEXT JOURNEY */}
+          {firstLine}
         </h1>
         <h1 className="pl-5 w-23 -mt-2 text-xl font-extrabold leading-snug font-cabiry">
-          STARTS HERE
+          {/* STARTS HERE */}
+          {secondLine}
         </h1>
         <div className="pl-5 mt-2 text-lg">
           <span className="font-poppins font-bold text-xl">Explore</span>{" "}
@@ -182,7 +156,7 @@ export default function Header() {
           </div>
 
           <div className="leading-none">
-            <div className="text-white -mt-2 text-3xl italic font-poppins font-bold">30%</div>
+            <div className="text-white -mt-2 text-3xl italic font-poppins font-bold">{content.offerText}%</div>
             <div className="pl-8 -mt-3 text-white text-lg font-poppinsmedium">OFF</div>
           </div>
         </div>

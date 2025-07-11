@@ -1,33 +1,22 @@
 
 import React from "react";
 
-// const categories = [
-//   { name: "All", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e" },
-//   { name: "Mountain", image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470" },
-//   { name: "Beach", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e" },
-//   { name: "Jungle", image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9" },
-//   { name: "River", image: "https://images.unsplash.com/photo-1506956191976-cdfc76c5b190" },
-//   { name: "Desert", image: "https://images.unsplash.com/photo-1600407120186-1f85d3e314e2" },
-//   { name: "Lake", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb" },
-//   { name: "City", image: "https://images.unsplash.com/photo-1493612276216-ee3925520721" },
-//   { name: "Canyon", image: "https://images.unsplash.com/photo-1508264165352-258859e62245" }
-// ];
 const categories = [
   {
     name: "All",
-    image: "https://img.freepik.com/free-photo/full-shot-travel-concept-with-landmarks_23-2149153258.jpg?semt=ais_hybrid&w=740", 
+    image: "https://img.freepik.com/free-photo/full-shot-travel-concept-with-landmarks_23-2149153258.jpg?semt=ais_hybrid&w=740",
   },
   {
     name: "Mountain",
-    image: "https://www.konkan.me/wp-content/uploads/2024/08/1-10-Best-Trekking-Places-in-India.jpg", 
+    image: "https://www.konkan.me/wp-content/uploads/2024/08/1-10-Best-Trekking-Places-in-India.jpg",
   },
   {
     name: "Beach",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7djIoRsn-pbj8-nqt6Yh4HymfhR1FCAVXgw&s", 
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7djIoRsn-pbj8-nqt6Yh4HymfhR1FCAVXgw&s",
   },
   {
     name: "Jungle",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgKRu0iUuLQAfmSuujm-36mBvuNl7gR9M2kQ&s", 
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgKRu0iUuLQAfmSuujm-36mBvuNl7gR9M2kQ&s",
   },
   {
     name: "River",
@@ -56,7 +45,7 @@ const categories = [
 
 export default function CategoryTabs() {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto  py-2">
       <div className="relative flex w-max px-2 space-x-4 before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full before:h-[2px] before:bg-gray-300">
         {categories.map((cat, index) => (
           <div
