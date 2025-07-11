@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import { FaSearch } from "react-icons/fa";
+import travelLoader from "../../Assets/loader_travel.gif";
 import axios from "axios";
-import travelLoader from "";
-
 
 export default function Header() {
   const navigate = useNavigate();
