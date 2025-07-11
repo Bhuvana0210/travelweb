@@ -56,13 +56,27 @@
 // }
 
 import React, { useState } from "react";
-import DropdownMenu from "./DropdownMenu";
-import dropdownicon from "../Assets/Icons/dropdownicon.png";
-import searchicon from "../Assets/Icons/searchicon.png";
-import profileicon from "../Assets/Icons/profileicon.png";
+// import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { CgProfile } from "react-icons/cg";
+import { FaSearch } from "react-icons/fa";
+
 
 export default function Header() {
-  const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
+
+  //CODE TO FETCH API
+  // const [users, setUsers] = useState([]);
+
+  // useEffect(() => {
+  //   // Fetch data from API
+  //   fetch("https://jsonplaceholder.typicode.com/users") // sample free API
+  //     .then((response) => response.json())
+  //     .then((data) => setUsers(data))
+  //     .catch((error) => console.error("Error fetching data:", error));
+  // }, []);
+
 
   return (
     <div className="relative h-[400px] text-white overflow-hidden">
@@ -96,18 +110,26 @@ export default function Header() {
       <div className="p-2 relative z-20">
         <div className="flex justify-between items-center">
           <div className="flex justify-between items-center gap-1">
-            <img src={profileicon} alt="Profile Icon" className="w-6 h-6" />
-            Bishal Kundu
-            <button onClick={() => setShowDropdown(!showDropdown)} className="text-sm">
-              <img src={dropdownicon} alt="Drop-down" className="w-4 h-4 mt-0.5" />
+
+
+            <button
+              onClick={() => navigate("/profile")}
+              className="text-sm flex items-center gap-1"
+            >
+              <CgProfile className="w-5 h-5" />
+              Bishal Kundu
+              <RiArrowDropDownLine className="w-6 h-6 -ml-2 mt-[2px]" />
             </button>
+
           </div>
+
+
 
           <div className="text-2xl font-bold">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU8rl-2kPfME825NKYamp97R4sF88wUMUpLoRcxrsa0I0mehICfbm283t-SK5fNkSZveM&usqp=CAU"
               alt="comapny-logo"
-              className="w-5 h-5"
+              className="w-5 h-5 rounded-full"
               draggable={false}
             />
 
@@ -115,12 +137,9 @@ export default function Header() {
         </div>
 
         <div className="relative w-full mt-2 pr-11">
+
           {/* 🔍 Search Icon inside input */}
-          <img
-            src={searchicon}
-            alt="Search Icon"
-            className="absolute left-2 top-4 transform -translate-y-1/2 w-4 h-4"
-          />
+          <FaSearch className="absolute left-2 top-4 transform -translate-y-1/2 w-4 h-4 text-black" />
 
           {/* 🔲 Input field with centered placeholder */}
           <input
@@ -128,19 +147,13 @@ export default function Header() {
             placeholder="Where do you want to go?"
             className="w-full pl-7 mt-1 pr-3 h-6 text-sm rounded-full text-black placeholder:text-black"
           />
+
         </div>
 
-        <h1 className="pl-5 w-23 mt-5 text-xl font-extrabold leading-snug font-cabiry">
-          YOUR NEXT JOURNEY
-        </h1>
-        <h1 className="pl-5 w-23 -mt-2 text-xl font-extrabold leading-snug font-cabiry">
-        STARTS HERE
-        </h1>
-
-        <p className="pl-5 mt-2 text-lg ">
-         <span className="font-bold text-xl">Explore</span> 
-         {" "} 
-         <span className="italic">The</span>
+        {/* <p className="pl-5 mt-2 text-lg ">
+          <span className="font-bold text-xl">Explore</span>
+          {" "}
+          <span className="font-gwathlyn italic">The</span>
           <div className="font-bold text-2xl -mt-2">
             <span className="text-orange-500">IN</span>
             <span className="text-white">D</span>
@@ -150,10 +163,44 @@ export default function Header() {
             <div className="text-white -mt-2 text-3xl italic font-bold">30%</div>
             <div className="pl-8 -mt-3 text-white text-lg">OFF</div>
           </div>
-        </p>
+        </p> */}
 
-        {showDropdown && <DropdownMenu />}
+        <h1 className="pl-5 w-23 mt-5 text-xl font-extrabold leading-snug font-cabiry">
+          YOUR NEXT JOURNEY
+        </h1>
+        <h1 className="pl-5 w-23 -mt-2 text-xl font-extrabold leading-snug font-cabiry">
+          STARTS HERE
+        </h1>
+        <div className="pl-5 mt-2 text-lg">
+          <span className="font-poppins font-bold text-xl">Explore</span>{" "}
+          <span className="font-gwathlyn italic">The</span>
+
+          <div className="font-swis721 text-2xl -mt-1 font-bold">
+            <span className="text-orange-500">IN</span>
+            <span className="text-white">D</span>
+            <span className="text-green-500">IA</span>
+          </div>
+
+          <div className="leading-none">
+            <div className="text-white -mt-2 text-3xl italic font-poppins font-bold">30%</div>
+            <div className="pl-8 -mt-3 text-white text-lg font-poppinsmedium">OFF</div>
+          </div>
+        </div>
+
       </div>
+
+
+      {/* CODE TO FETCH API */}
+      {/* 
+      <div>
+      <h2>User List</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name} ({user.email})</li>
+        ))}
+      </ul>
+    </div> */}
+
     </div>
   );
 }

@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Cabiry";
-  src: url("../src/Assets/Fonts/cabiry-font.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -21,5 +14,53 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: "Cabiry";
+  src: url("../src/Assets/Fonts/cabiry-bubble-highlight.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gwathlyn";
+  src: url("../src/Assets/Fonts/gwathlyn-regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FranklinGothic';
+  src: url("../src/Assets/Fonts/franklin-gothic-medium-regular.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'ArialBlack';
+  src: url("../src/Assets/Fonts/arial-black.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../src/Assets/Fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../src/Assets/Fonts/Poppins-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Poppins Medium';
+  src: url('../src/Assets/Fonts/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Anton';
+  src: url('../src/Assets/Fonts/Anton-Regular.ttf') format('truetype');
 }
 

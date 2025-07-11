@@ -2,18 +2,30 @@
 import React from "react";
 import Header from "./Components/Header";
 import CategoryTabs from "./Components/CategoryTabs";
+import ProfilePage from "./Components/ProfilePage";
+import { Route, Routes } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 // import OffersFilters from "./Components/OffersFilters";
 // import DestinationList from "./Components/DestinationList";
 // import BottomBar from "./Components/BottomBar";
 // import WhatsAppButton from "./Components/WhatsAppButton";
 
 export default function App() {
+
+  const location = useLocation();
+
   return (
     <div className="font-sans bg-white text-black">
-      <Header />
-      <div className="transform -translate-y-[80px]">
-        <CategoryTabs />
-      </div>
+      <Routes>
+        <Route path="/" element={<Header />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Routes>
+
+      {location.pathname === "/" && (
+        <div className="transform -translate-y-[80px]">
+          <CategoryTabs />
+        </div>
+      )}
 
       {/*<OffersFilters />
 
