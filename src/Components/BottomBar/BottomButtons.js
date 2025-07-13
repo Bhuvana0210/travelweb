@@ -1,7 +1,7 @@
 import React from "react";
 import { FaCalendarAlt, FaCog } from "react-icons/fa";
 
-export default function BottomBar() {
+export default function BottomButtons() {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-orange-500 text-white text-sm z-20">
       <div className="flex justify-between items-center text-center">
